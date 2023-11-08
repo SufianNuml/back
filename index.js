@@ -12,7 +12,15 @@ app.get("/",(req,resp)=>
 })
 
 
-
+app.post("/login", async (req, resp) => {
+    try {
+        const data = new test(req.body);
+        const result = await data.save();
+        resp.send(result);
+    } catch (error) {
+        resp.status(500).json({ error: "An error occurred" });
+    }
+});
 
 app.listen(5000 , ()=>
 {
